@@ -10,8 +10,8 @@ export default defineConfig({
     host: true
   },
   build: {
+    target: 'esnext',
     rollupOptions: {
-      external: ['@rollup/rollup-linux-x64-gnu'],
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],

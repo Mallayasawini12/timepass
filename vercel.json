@@ -1,12 +1,9 @@
 {
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "buildCommand": "npm run build",
-  "installCommand": "npm install --force",
+  "buildCommand": "npm install --no-optional && npm run build",
+  "installCommand": "npm install --no-optional",
   "framework": "vite",
   "outputDirectory": "dist"
 }
