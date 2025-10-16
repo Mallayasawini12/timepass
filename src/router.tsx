@@ -7,6 +7,8 @@ import Reels from "@/pages/Reels";
 import NotFound from "@/pages/NotFound";
 import Create from "@/pages/Create";
 
+import { ProtectedRoute } from "@/App";
+
 export const router = createBrowserRouter(
   [
     {
@@ -15,7 +17,11 @@ export const router = createBrowserRouter(
       children: [
         {
           index: true,
-          element: <Feed />,
+          element: (
+            <ProtectedRoute>
+              <Feed />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "auth",
@@ -23,15 +29,27 @@ export const router = createBrowserRouter(
         },
         {
           path: "profile/:userId",
-          element: <Profile />,
+          element: (
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "reels",
-          element: <Reels />,
+          element: (
+            <ProtectedRoute>
+              <Reels />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "create",
-          element: <Create />,
+          element: (
+            <ProtectedRoute>
+              <Create />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "*",
