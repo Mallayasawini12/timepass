@@ -10,8 +10,11 @@ export default defineConfig({
     host: true
   },
   build: {
-    target: 'esnext',
+    target: 'es2015',
     rollupOptions: {
+      external: [
+        '@rollup/rollup-linux-x64-gnu'
+      ],
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
@@ -25,9 +28,18 @@ export default defineConfig({
             '@radix-ui/react-slot',
             '@radix-ui/react-toast'
           ]
-        }
+        },
+        format: 'es'
       }
-    }
+    },
+    commonjsOptions: {
+      include: [/node_modules/],
+      extensions: ['.js', '.cjs'],
+      transformMixedEsModules: true
+    },
+    sourcemap: false,
+    minify: 'esbuild',
+    emptyOutDir: true
   },
   plugins: [react()],
   resolve: {
